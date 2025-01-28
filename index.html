@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pesan Yakult</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  
+  
+  
+  
+    <div id="paymentPopup" class="popup">
+    <div class="popup-content-small">
+      <h2>Pilih Metode Pembayaran</h2>
+      <button class="popup-btn" onclick="mandiri('1310013918570')">MANDIRI</button>
+      <button class="popup-btn" onclick="shopeepay('083876942890')">SHOPEEPAY</button>
+      
+      
+<button class="popup-btn" onclick="showQrisPopup()">QRIS AJA</button>
+
+<!-- Popup QRIS -->
+<div id="qrisPopup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closeQrisPopup()">&times;</span>
+        <h2>Scan QRIS untuk Pembayaran</h2>
+        <img id="qrisImage" src="qris.png" alt="QRIS Code" style="width: 250px; height: auto;">
+        <button class="back-btn" onclick="closeQrisPopup()">Kembali</button> <!-- Tombol Kembali -->
+    </div>
+</div>
+      
+      
+      <button class="popup-btn" onclick="showUploadSection()">UPLOAD BUKTI TRANSFER </button>
+      <button class="close-btn" onclick="closePaymentPopup()">Tutup</button>
+    </div>
+  </div>
+
+  <!-- Popup QRIS -->
+  <div class="popup" id="qris-popup">
+    <div class="popup-content">
+      <h2>QRIS</h2>
+      <img src="qris.png" alt="QRIS" style="width: 100%;">
+      <button class="btn-back" onclick="closeQrisPopup()">Kembali</button>
+    </div>
+  </div>
+
+  <!-- Popup Upload Bukti Transfer -->
+  <div class="popup" id="upload-popup">
+    <div class="popup-content">
+      <h2>Upload Bukti Transfer</h2>
+      <h2>KIRIM SCREENSHOT</h2>
+      <input type="file" id="upload" accept="image/*">
+      <button class="btn" id="KirimBukti" onclick="sendProof()">KIRIM BUKTI TRANSFER</button>
+      <button class="close-btn" onclick="closeUploadPopup()">Tutup</button>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  <header>
+    <h1>Pesan Yakult Online</h1>
+  </header>
+
+  <main>
+    <section id="pesanYakult">
+      <h2>Formulir Pesanan</h2>
+      <input type="text" id="nama" placeholder="Nama Lengkap" required>
+      <input type="email" id="email" placeholder="Email (Opsional)">
+      <input type="text" id="noWhatsApp" placeholder="Nomor WhatsApp" required>
+      <textarea id="alamat" placeholder="Alamat Lengkap" required></textarea>
+
+      <div id="yklt">
+        <h3>PRODUK ORIGINAL:</h3>
+      </div>
+      <div id="produk">
+        <div class="paketOriginal">
+          <h4>YKLT P.A.C.K</h4>
+          <button onclick="ubahJumlahProduk('packOriginalCount', -1)">-</button>
+          <span id="packOriginalCount">0</span>
+          <button onclick="ubahJumlahProduk('packOriginalCount', 1)">+</button>
+        </div>
+        <div class="paketOriginal">
+          <h4>YKLT B.A.L.L</h4>
+          <button onclick="ubahJumlahProduk('ballOriginalCount', -1)">-</button>
+          <span id="ballOriginalCount">0</span>
+          <button onclick="ubahJumlahProduk('ballOriginalCount', 1)">+</button>
+        </div>
+        
+        <h4>PRODUK LIGHT:</h4>
+        
+        <div class="paketLight">
+          <h4>YKLT P.A.C.K</h4>
+          <button onclick="ubahJumlahProduk('packLightCount', -1)">-</button>
+          <span id="packLightCount">0</span>
+          <button onclick="ubahJumlahProduk('packLightCount', 1)">+</button>
+        </div>
+        <div class="paketLight">
+          <h4>YKLT B.A.L.L</h4>
+          <button onclick="ubahJumlahProduk('ballLightCount', -1)">-</button>
+          <span id="ballLightCount">0</span>
+          <button onclick="ubahJumlahProduk('ballLightCount', 1)">+</button>
+        </div>
+      </div>
+
+      <h3>Total Harga: Rp<span id="totalHarga">0</span></h3>
+      <button id="konfirmasiPesanan" onclick="konfirmasiPesanan()">Konfirmasi Pesanan</button>
+      
+      <button id="batalPesanan">Batalkan Pesanan</button>
+    </section>
+
+    <section id="riwayatPesanan">
+      <h2>Riwayat Pesanan</h2>
+      <div id="historyContainer"></div>
+      <button id="paymentButton" style="display: none;">BAYAR</button>
+    </section>
+  </main>
+  
+  
+  
+  <script src="script.js"></script>
+</body>
+</html>
